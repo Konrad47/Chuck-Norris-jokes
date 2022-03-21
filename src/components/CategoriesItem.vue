@@ -5,7 +5,14 @@
         {{ category }}
       </b-list-group-item>
     </b-list-group>
-    <b-modal ref="joke-modal" hide-footer> </b-modal>
+    <b-modal id="modal-1" ref="my-modal" hide-header hide-footer>
+      <div class="d-block text-center">
+        <h3>{{ randomJoke.value }}</h3>
+      </div>
+      <b-button class="mt-3" variant="outline-danger" block @click="hideModal"
+        >Close Me</b-button
+      >
+    </b-modal>
   </div>
 </template>
 
@@ -32,10 +39,14 @@ export default {
       try {
         const response = await HTTP.get(`/random?category=${category}`);
         this.randomJoke = response.data;
+        this.$refs["my-modal"].show();
         console.log(response.data);
       } catch (err) {
         console.log(err);
       }
+    },
+    hideModal() {
+      this.$refs["my-modal"].hide();
     },
   },
   created() {
