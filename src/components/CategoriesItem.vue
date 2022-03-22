@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div id="categories">
     <b-list-group v-for="(category, i) in categories" :key="i">
       <b-list-group-item button @click="fetchCategory(category)">
         {{ category }}
       </b-list-group-item>
     </b-list-group>
-    <b-modal id="modal-1" ref="my-modal" hide-header hide-footer>
+    <b-modal ref="my-modal" hide-header hide-footer>
       <div class="d-block text-center">
         <h3>{{ randomJoke.value }}</h3>
       </div>
@@ -55,5 +55,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#categories {
+  margin-right: 10%;
+  margin-left: 10%;
+  padding-bottom: 20px;
+}
 </style>
